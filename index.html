@@ -14,21 +14,21 @@
       --color-fondo: #ffffff;
       --color-texto: #1a1a1a;
     }
-
+  
     [data-theme="dark"] {
       --color-primario: #90caf9;
       --color-secundario: #64b5f6;
       --color-fondo: #121212;
       --color-texto: #f2f2f2;
     }
-
+  
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
     }
-
+  
     body {
       background-color: var(--color-fondo);
       color: var(--color-texto);
@@ -36,36 +36,38 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
       text-align: center;
-      padding: 2rem;
+      padding: 2rem 1rem;
       transition: background 0.3s, color 0.3s;
+      max-width: 100%;
+      overflow-x: hidden;
     }
-
+  
     h1 {
-      font-size: 3rem;
+      font-size: clamp(2rem, 6vw, 3rem);
       margin-bottom: 1rem;
       color: var(--color-primario);
     }
-
+  
     p {
-      font-size: 1.2rem;
-      max-width: 600px;
+      font-size: clamp(1rem, 3.5vw, 1.2rem);
+      max-width: 90vw;
       margin-bottom: 2rem;
     }
-
+  
     .icon {
-      font-size: 5rem;
+      font-size: clamp(3rem, 10vw, 5rem);
       color: var(--color-secundario);
       margin-bottom: 1rem;
       animation: spin 4s linear infinite;
     }
-
+  
     @keyframes spin {
       0% { transform: rotate(0deg);}
       100% { transform: rotate(360deg);}
     }
-
+  
     .btn-home {
       padding: 1rem 2rem;
       background: linear-gradient(to right, var(--color-primario), var(--color-secundario));
@@ -74,12 +76,14 @@
       border-radius: 10px;
       font-weight: 600;
       transition: background 0.3s ease;
+      display: inline-block;
+      margin-top: 1rem;
     }
-
+  
     .btn-home:hover {
       background: var(--color-secundario);
     }
-
+  
     .toggle-theme {
       position: fixed;
       top: 1rem;
@@ -92,15 +96,19 @@
       cursor: pointer;
       font-weight: bold;
       transition: all 0.3s ease;
+      z-index: 10;
     }
-
+  
     footer {
-      position: absolute;
-      bottom: 1rem;
+      position: relative;
+      bottom: 0;
       font-size: 0.9rem;
       color: var(--color-texto);
+      margin-top: auto;
+      padding-top: 2rem;
     }
   </style>
+  
 </head>
 <body>
   <button class="toggle-theme" onclick="toggleTheme()">Modo Oscuro</button>
