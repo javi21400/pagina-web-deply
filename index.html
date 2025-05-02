@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sitio en Mantenimiento</title>
+  <title>Desarrollador Web | Tu Nombre</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -13,82 +13,208 @@
       --color-secundario: #2a5298;
       --color-fondo: #ffffff;
       --color-texto: #1a1a1a;
+      --color-card: #f4f8ff;
+      --color-nav: #f2f6ff;
+      --color-form-bg: #ffffff;
+      --color-btn-text: #fff;
     }
-  
+
     [data-theme="dark"] {
       --color-primario: #90caf9;
       --color-secundario: #64b5f6;
       --color-fondo: #121212;
       --color-texto: #f2f2f2;
+      --color-card: #1e1e1e;
+      --color-nav: #1a1a1a;
+      --color-form-bg: #1e1e1e;
+      --color-btn-text: #fff;
     }
-  
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
     }
-  
+
     body {
       background-color: var(--color-fondo);
       color: var(--color-texto);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-      padding: 2rem 1rem;
-      transition: background 0.3s, color 0.3s;
-      max-width: 100%;
-      overflow-x: hidden;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      transition: background 0.3s ease, color 0.3s ease;
     }
-  
-    h1 {
-      font-size: clamp(2rem, 6vw, 3rem);
-      margin-bottom: 1rem;
-      color: var(--color-primario);
-    }
-  
-    p {
-      font-size: clamp(1rem, 3.5vw, 1.2rem);
-      max-width: 90vw;
-      margin-bottom: 2rem;
-    }
-  
-    .icon {
-      font-size: clamp(3rem, 10vw, 5rem);
-      color: var(--color-secundario);
-      margin-bottom: 1rem;
-      animation: spin 4s linear infinite;
-    }
-  
-    @keyframes spin {
-      0% { transform: rotate(0deg);}
-      100% { transform: rotate(360deg);}
-    }
-  
-    .btn-home {
-      padding: 1rem 2rem;
+
+    header {
       background: linear-gradient(to right, var(--color-primario), var(--color-secundario));
-      color: white;
+      color: #ffffff;
+      padding: 4rem 1rem;
+      text-align: center;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      opacity: 0.9;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      background-color: var(--color-nav);
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: background-color 0.3s ease;
+    }
+
+    nav a {
+      color: var(--color-primario);
       text-decoration: none;
-      border-radius: 10px;
       font-weight: 600;
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      display: block;
+      height: 2px;
+      width: 0;
+      background-color: var(--color-secundario);
+      transition: width 0.3s ease;
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+    }
+
+    .section-title {
+      font-size: 2.8rem;
+      margin-bottom: 2rem;
+      color: var(--color-primario);
+      text-align: center;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--color-secundario);
+      margin: 10px auto 0;
+      border-radius: 5px;
+    }
+
+    .card {
+      background-color: var(--color-card);
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(30, 60, 114, 0.1);
+      margin-bottom: 3rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 35px rgba(30, 60, 114, 0.15);
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    ul li::before {
+      content: '\2022';
+      color: var(--color-secundario);
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: var(--color-form-bg);
+      color: var(--color-texto);
+      font-size: 1rem;
+    }
+
+    .contact-form button,
+    .btn-agendar {
+      padding: 1rem 2.5rem;
+      background: linear-gradient(to right, var(--color-primario), var(--color-secundario));
+      border: none;
+      border-radius: 10px;
+      color: var(--color-btn-text);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
       transition: background 0.3s ease;
       display: inline-block;
-      margin-top: 1rem;
+      text-decoration: none;
     }
-  
-    .btn-home:hover {
+
+    .contact-form button:hover,
+    .btn-agendar:hover {
       background: var(--color-secundario);
     }
-  
+
+    .social-icons {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .social-icons a {
+      margin: 0 1rem;
+      color: var(--color-secundario);
+      font-size: 1.6rem;
+      transition: transform 0.3s ease, color 0.3s;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+      color: var(--color-primario);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: var(--color-nav);
+      color: var(--color-texto);
+      border-top: 1px solid #ccc;
+    }
+
     .toggle-theme {
       position: fixed;
       top: 1rem;
       right: 1rem;
-      background: transparent;
+      z-index: 1000;
+      background-color: var(--color-fondo);
       border: 2px solid var(--color-primario);
       color: var(--color-texto);
       padding: 0.5rem 1rem;
@@ -96,33 +222,187 @@
       cursor: pointer;
       font-weight: bold;
       transition: all 0.3s ease;
-      z-index: 10;
     }
-  
-    footer {
-      position: relative;
-      bottom: 0;
-      font-size: 0.9rem;
-      color: var(--color-texto);
-      margin-top: auto;
-      padding-top: 2rem;
-    }
+    .toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(to right, var(--color-primario), var(--color-secundario));
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2.2rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  nav a {
+    font-size: 0.95rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.95rem;
+    padding: 0.8rem;
+  }
+
+  .contact-form button,
+  .btn-agendar {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  .whatsapp-float {
+    bottom: 15px;
+    right: 15px;
+    font-size: 1.8rem;
+    padding: 12px;
+  }
+
+  .toggle-theme {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .social-icons a {
+    font-size: 1.4rem;
+    margin: 0 0.5rem;
+  }
+
+  section {
+    margin: 2rem auto;
+  }
+}
+
+
   </style>
-  
 </head>
 <body>
   <button class="toggle-theme" onclick="toggleTheme()">Modo Oscuro</button>
+  <header data-aos="fade-down">
+    <h1>Jesus Vazquez</h1>
+    <p>Desarrollador Web | Fullstack | UI/UX</p>
+  </header>
 
-  <div data-aos="fade-up">
-    <div class="icon">
-      <i class="fas fa-tools"></i>
+  <nav>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#portafolio">Portafolio</a>
+    <a href="#testimonios">Testimonios</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <section id="sobre-mi" data-aos="fade-up">
+    <h2 class="section-title">Sobre mí</h2>
+    <div class="card">
+      <p>Soy un desarrollador web apasionado por la tecnología y el diseño. Me especializo en crear sitios web atractivos, funcionales y rápidos, utilizando herramientas modernas como HTML, CSS, JavaScript, React, Python y más.</p>
     </div>
-    <h1>Sitio en mantenimiento</h1>
-    <p>Estamos trabajando para mejorar tu experiencia. Vuelve pronto, ¡estaremos listos para ayudarte!</p>
-  </div>
+  </section>
+
+  <section id="servicios" data-aos="fade-up">
+    <h2 class="section-title">Servicios</h2>
+    <div class="card">
+      <ul>
+        <li>Diseño y desarrollo de sitios web responsivos</li>
+        <li>Interfaces UI/UX modernas</li>
+        <li>Aplicaciones web (frontend y backend)</li>
+        <li>Mantenimiento y optimización</li>
+        <li>Tiendas online y sistemas personalizados</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="portafolio" data-aos="fade-up">
+    <h2 class="section-title">Portafolio</h2>
+    <div class="card">
+      <p>Aquí puedes ver algunos de mis proyectos más recientes.</p>
+      <p><a href="https://github.com/tuusuario" target="_blank">Visita mi GitHub</a></p>
+    </div>
+  </section>
+
+  <section id="testimonios" data-aos="fade-up">
+    <h2 class="section-title">Testimonios</h2>
+    <div class="card">
+      <blockquote>“Trabajar con Jesus Vazquez fue excelente. Muy profesional y el resultado superó nuestras expectativas.”<br><strong>– Mariana Torres</strong></blockquote>
+      <blockquote>“Gran habilidad técnica y atención al detalle. 100% recomendado.”<br><strong>– Luis Mendoza</strong></blockquote>
+      <blockquote>“Una experiencia increíble. Alejandro siempre estuvo atento a cada detalle y el sitio quedó justo como lo imaginábamos.”<br><strong>– Sofía Hernández</strong></blockquote>
+
+    </div>
+  </section>
+
+  <section id="contacto" data-aos="fade-up">
+    <h2 class="section-title">Contacto</h2>
+    <form id="contact-form" class="contact-form" onsubmit="sendEmail(event)">
+      <input type="email" name="email" placeholder="Tu correo electrónico" required />
+      <textarea name="mensaje" placeholder="Tu mensaje" rows="5" required></textarea>
+      <button type="submit">Enviar Mensaje</button>
+    </form>
+  </section>
+
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  emailjs.init("vY1ZWhqb7rkuiOSmh");
+
+  function sendEmail(event) {
+    event.preventDefault();
+    const form = document.getElementById('contact-form');
+
+    emailjs.sendForm("service_aq27ooi", "template_ez0a4bl", form)
+      .then(function(response) {
+        showToast("¡Mensaje enviado con éxito!");
+        form.reset();
+      }, function(error) {
+        showToast("Error al enviar el mensaje. Intenta de nuevo.");
+      });
+  }
+
+  function showToast(message) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.classList.add('show');
+
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 3000); // 3 segundos visible
+  }
+</script>
+
+
+  
 
   <footer>
-    &copy; 2025 Jesus Vazquez. Todos los derechos reservados.
+    <p>&copy; 2025 Tu Nombre. Todos los derechos reservados.</p>
   </footer>
 
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -134,5 +414,80 @@
       root.setAttribute('data-theme', theme === 'dark' ? 'light' : 'dark');
     }
   </script>
+
+  <div id="toast" class="toast"></div>
+ 
+<!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/524522002603" class="whatsapp-float" id="whatsapp-btn" target="_blank" title="¡Hablemos por WhatsApp!">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  
+  <style>
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
+      color: white;
+      font-size: 2.2rem;
+      padding: 15px;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 1000;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+    }
+  
+    .whatsapp-float.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  
+    .whatsapp-float:hover {
+      transform: scale(1.15);
+      background: #20c25b;
+    }
+  
+    @media (max-width: 600px) {
+      .whatsapp-float {
+        font-size: 1.8rem;
+        padding: 12px;
+      }
+    }
+  </style>
+  
+  <script>
+    const whatsappBtn = document.getElementById('whatsapp-btn');
+    const contactoSection = document.getElementById('contacto');
+  
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          whatsappBtn.classList.add('visible');
+        } else {
+          whatsappBtn.classList.remove('visible');
+        }
+      });
+    }, { threshold: 0.5 });
+  
+    observer.observe(contactoSection);
+  </script>
+  
+  <script>
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+  
 </body>
 </html>
